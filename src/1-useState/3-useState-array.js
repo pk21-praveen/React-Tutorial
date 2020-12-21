@@ -14,10 +14,10 @@ const UseStateArray = () => {
     setPeople(newPeople);
   };
 
-  const complexIncrease = (id, name) => {
+  const complexIncrease = () => {
     setTimeout(() => {
       setPeople((prevPeople) => {
-        return prevPeople.concat({ id: id, name: name });
+        return prevPeople.concat({ id: prevPeople.length + 1, name: "name" + (prevPeople.length + 1) });
       });
     }, 5000);
   };
@@ -34,12 +34,9 @@ const UseStateArray = () => {
           </div>
         );
       })}
-      <button onClick={() => complexIncrease(people.length + 1, "name" + (people.length + 1))}>complexIncrease</button>
-      <button onClick={() => addItem(people.length + 1, "name" + (people.length + 1))}>add</button>
-
-      <button className='btn' onClick={() => setPeople([])}>
-        clear items
-      </button>
+      <button className='btn mr-2' onClick={() => complexIncrease()}>complexIncrease</button>
+      <button className='btn mr-2' onClick={() => addItem(people.length + 1, "name" + (people.length + 1))}>add</button>
+      <button className='btn mr-2' onClick={() => setPeople([])}>clear items</button>
     </>
   );
 };
